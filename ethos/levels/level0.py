@@ -17,14 +17,23 @@ class Level0(Level):
 
         self.activeSprites = sprite.RenderClear()
         self.drawnSprites = []
-        self.npc = GameObject(image.load('test.png'), 100,50)
+        self.npc = GameObject(image.load('User.png'), 100,50)
         self.activeSprites.add(self.npc)
         
-        self.block1 = GameObject(image.load('block.png'), 100, 400)
+        self.block1 = GameObject(image.load('platform.png'), 100, 400)
         self.activeSprites.add(self.block1);
 
         self.mousex = 0
         self.mousey = 0
+
+	#The highest height our npc
+	#can climb. If a the dY with a
+	#point is higher than this, the
+	#npc will just fall to his death
+	self.MAX_HILL_HEIGHT = 3
+
+	self.toDrawRectTopLeft = (0,0)
+	self.toDrawRectBottomRight = (0,0)
 
         self.drawing = False
 
@@ -46,15 +55,14 @@ class Level0(Level):
 
             gobject.update(dT)
 
+	collidingPoints = []
         for drawnstuff in self.drawnSprites:
-            x =  sprite.collide_mask(self.npc, drawnstuff.dSprite)
-            if x:
-                for y in x:
-                    print "Collision!"
-                    self.npc.vy = 0
-
-
-
+	    for point in drawnstuff.pts:
+	        x = self.npc.rect.collidepoint(point)
+	        if x:
+                    collidingPoints.append(point)
+        if(len(collidingPoints) > 0):
+            self.npc.processPointCollision(collidingPoints)
 
 
 
@@ -73,6 +81,8 @@ class Level0(Level):
     def processMouseButtonDown(self, pos):
         print "Ya clicked at " + str(pos[0]) + " " + str(pos[1]) + " ya goof!"
         self.drawing = True
+	
+	self.toDrawRectTopLeft = (pos[0],pos[1])
         if len(self.pts) > 0:
             self.pts = []
 
@@ -82,4 +92,6 @@ class Level0(Level):
         if self.drawing is True:
             self.drawing = False
             self.drawnSprites.append ( DrawnObject(self.pts) )
+	    self.toDrawRectBottomRight = (pos[0], pos[1])
+
 

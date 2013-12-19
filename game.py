@@ -50,8 +50,8 @@ class EthosMain:
 
         self.activeState.update(self.Clock.get_time())
         self.activeState.activeSprites.draw(window)
-        #if len(self.activeState.pts) > 1:
-        #    draw.lines(window, (255,0,255), False, self.activeState.pts, 3) 
+        if len(self.activeState.pts) > 1:
+            draw.lines(window, (255,0,255), False, self.activeState.pts, 3) 
 
         self.Clock.tick(30)
         display.flip()
