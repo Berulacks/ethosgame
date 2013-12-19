@@ -11,7 +11,7 @@ class DrawnObject(GameObject):
         surface = Surface((1280,720))
         self.dSprite = sprite.Sprite()
 
-	self.dSprite.image = image.load('test.png')
+	#self.dSprite.image = image.load('test.png')
 
-        self.dSprite.rect = draw.lines(surface, (255,0,255), False, pts, 3)
-        self.dSprite.mask = mask.from_surface(surface) 
+        #self.dSprite.rect = draw.lines(surface, (255,0,255), False, pts, 3)
+        #self.dSprite.mask = mask.from_surface(surface) 

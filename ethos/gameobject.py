@@ -36,10 +36,10 @@ class GameObject(sprite.Sprite):
             if(point[1] > xExtreme[1]):
                 yExtreme = point
 	
-        print "We be at (" + str(self.rect.x) + ", " + str(self.rect.y) + ")"
+        print "We be at (" + str(self.rect.x + self.rect.width/2) + ", " + str(self.rect.y + self.rect.height) + ")"
         print "xExtreme is (" + str(xExtreme[0]) + ", " + str(xExtreme[1]) + ")"
 
-        base = self.rect.y + self.rect.width/2 + 5
+        base = self.rect.y + self.rect.height
 
         if yExtreme[1] < base:
             self.vy = abs(self.vy) * 0.2
@@ -48,7 +48,8 @@ class GameObject(sprite.Sprite):
             print "Diff is " + str(base - xExtreme[1])
             if base - xExtreme[1] <= self.MAX_HILL_HEIGHT:
                 #print "Incrementing vy by " + str(xExtreme[1] - self.rect.y)
-                self.vy = abs(base - xExtreme[1])
+		self.vy = 0
+                self.rect.y -= abs(base - xExtreme[1])
 
 
 
