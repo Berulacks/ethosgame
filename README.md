@@ -13,12 +13,17 @@ Just make sure to install pygame, first! I would recommend using [pip](http://ww
 
 The dependencies for pygame are (unless I am mistaken) as follows:
 
-[libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)
-[portmidi](http://portmedia.sourceforge.net/)
-python
-[sdl_image](http://www.libsdl.org/projects/SDL_image/)
-[sdl_mixer](http://www.libsdl.org/projects/SDL_mixer/)
-[sdl_ttf](http://www.libsdl.org/projects/SDL_ttf/)
+* [libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)
+ 
+* [portmidi](http://portmedia.sourceforge.net/)
+
+* python
+
+* [sdl_image](http://www.libsdl.org/projects/SDL_image/)
+
+* [sdl_mixer](http://www.libsdl.org/projects/SDL_mixer/)
+
+* [sdl_ttf](http://www.libsdl.org/projects/SDL_ttf/)
 
 
 Ubuntu users can just run the following command to get their dependencies in order:
@@ -33,8 +38,10 @@ Once you have all the dependencies installed, just run
 ```
 pip install pygame
 ```
-as root and you will be ready to run the game:
+as root* and you will be ready to run the game:
 
 ```
 python game.py
 ```
+
+*You might want to use a [virtualenv](http://www.virtualenv.org/en/latest/), but that's your choice entirely. I would recommend it, though.
